@@ -1,0 +1,151 @@
+@font-face {
+    font-family:'Open Sans', 'Work Sans';
+    src: url(Open_Sans/OpenSans-VariableFont_wdth\,wght.ttf), format('truetype');
+}
+*{
+    margin:0px;
+    padding:0px;
+    font-family: 'Open Sans', 'Work Sans';
+}
+#container{
+    background-image:linear-gradient(45deg, oklch(70.4% 0.14 182.503),oklch(52.839% 0.16194 253.158));
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+#card{
+    background-color: rgb(236, 236, 236);
+    padding: 3% 5% 10% 5%;
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    border-radius:20px;
+    width:300px;
+    height: auto;
+}
+#conteudo{
+    width:300px;
+}
+/*SUB-CONTAINER1*/
+#sub-container1{
+    text-align:center;
+    margin-bottom:20px;
+}
+/*TÍTULO*/
+#sub-container1>h1{
+    color:oklch(52.839% 0.16194 253.158);
+}
+/*SUB-CONTAINER2*/
+#sub-container2{
+    display:flex;
+    flex-direction:row;
+    gap:5px;
+    align-items: center;
+    margin-bottom:10px;
+}
+/*INPUT*/
+#valor-tarefas{
+    flex:1; /*ao colocar 1 ele ocupa/preenche o tamanho do container*/
+    padding:10px;
+    border-radius:5px;
+    border: 2px solid rgb(213, 210, 210) ;
+}
+#valor-tarefas:focus{
+    outline: none;  
+}
+/*BOTÃO-ADD*/
+#btn-add{
+    cursor:pointer;
+    width:30px;
+    height: 42px;
+    border-radius: 5px;
+    background-color:oklch(70.4% 0.14 182.503);
+    border:none;
+    color: white;
+}
+/*CONTAINER-LISTA*/
+#container-lista{
+    height:auto;
+    display:flex;
+    flex-direction: column;
+}
+.tarefas-a-fazer{
+    display:flex;
+    height:35px;
+    margin-bottom:15px;
+    background-color: rgb(255, 255, 255);
+    border-radius:8px;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 1px 1px 5px rgb(158, 158, 158);
+}
+.tarefa-marcada{
+    display:flex;
+    height:35px;
+    margin-bottom:15px;
+    background-color: rgb(212, 211, 211);
+    border-radius:8px;
+    justify-content: center;
+    align-items: center;
+    font-style: italic;
+    text-decoration:line-through;
+    box-shadow: 1px 1px 5px rgb(158, 158, 158);
+}
+.check-box{
+    flex-basis:10%;
+    display:flex;
+}
+.check-box>i{
+   margin:2px 0px 2px 5px;
+   cursor:pointer;
+}
+.conteudo-tarefa{
+    flex-basis:70%;
+    padding-left:5px;
+}
+.editar{
+    flex-basis:10%;
+    background-color: rgb(184, 207, 250);
+    height:100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.editar>i{
+    cursor:pointer;
+}
+.deletar{
+    flex-basis:10%;
+    background-color: rgb(253, 160, 160);
+    height:100%;
+    display:flex;
+    align-items: center;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+.deletar>i{
+    margin:3px;
+    cursor:pointer;
+}
+
+/*DELETAR-HOVER*/
+.deletar:hover{
+    background-color: rgb(250, 87, 87);
+}
+
+/*EDITAR-HOVER*/
+.editar:hover{
+    background-color: rgb(91, 166, 252);
+}
+
+/*tarefas:hover*/
+.tarefas-a-fazer:hover{
+    scale:calc(105%);
+    transition:0.4s;
+}
+.tarefa-marcada:hover{
+    scale:calc(105%);
+    transition:0.4s;
+}
