@@ -1,3 +1,5 @@
 .container-sidebar{
-    background-color: aqua;
+    background-color: rgb(116, 116, 116);
+    flex-grow:0.15;
+    height:100vh;
 }
