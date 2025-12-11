@@ -1,0 +1,22 @@
+.container-form{
+    border: 1px solid red;
+    display:flex;
+    flex-wrap: wrap;
+    align-content: start;
+}
+.container-submit{
+    border: 1px solid black;
+    display:flex;
+    flex-basis: 100%;
+    justify-content: space-between;
+}
+.container-form>label{
+    padding-bottom:20px;
+}
+.container-submit>input{
+    width:200px;
+    padding-left:5px;
+}
+#add-tarefa{
+    background-color: rgb(118, 118, 250);
+}
