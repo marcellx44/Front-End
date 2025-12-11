@@ -1,0 +1,13 @@
+.container-item{
+    /* border: 1px solid green; */
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.container-item>p{
+    padding-left:10px;
+    flex-basis:80%
+}
+#excluir{
+    background-color: rgb(247, 180, 180);
+}
