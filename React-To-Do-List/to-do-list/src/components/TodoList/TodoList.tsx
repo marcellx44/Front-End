@@ -5,7 +5,15 @@ export function TodoList(){
     return(
         <div className="container-todolist">
             <TodoForm></TodoForm>
-            <TodoItem></TodoItem>
+            {/* <ul className="items-list">
+                {items.map(
+                    item =>(
+                        <TodoItem key={item.id}> 
+                            {item.text}
+                        </TodoItem>
+                )
+                )}
+            </ul> */}
         </div>
     )
 }
