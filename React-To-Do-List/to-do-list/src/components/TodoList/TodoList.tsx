@@ -1,19 +1,18 @@
 import "./to-do-list.estilos.css"
 import { TodoForm } from "../../components/TodoForm/TodoForm.tsx";
-import { TodoItem } from "../TodoItem/TodoItem.tsx";
 export function TodoList(){
     return(
         <div className="container-todolist">
             <TodoForm></TodoForm>
-            {/* <ul className="items-list">
+             {/* <ul className="items-list">
                 {items.map(
                     item =>(
-                        <TodoItem key={item.id}> 
+                        <TodoItem > 
                             {item.text}
                         </TodoItem>
                 )
                 )}
-            </ul> */}
+            </ul>  */}
         </div>
     )
 }
