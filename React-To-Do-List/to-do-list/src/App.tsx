@@ -23,7 +23,8 @@ type ItemType = {
 export const ItemContextProvider= createContext(
   {
     items:[{id:'', text:''}],
-    addTask: (text: string)=>{}
+    addTask: (text: string)=>{},
+    removeTask: (id: string)=>{}
   }
 )
 
@@ -36,8 +37,12 @@ function App() {
     console.log(items)
   }
 
+  const removeTask= (id: string)=>{
+    setItems(items=> items.filter(item=>item.id !== id));
+  }
+
   return (
-    <ItemContextProvider.Provider value={{ items, addTask }}>
+    <ItemContextProvider.Provider value={{ items, addTask, removeTask }}>
       <Header>
 
       </Header>
