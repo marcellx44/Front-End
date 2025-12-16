@@ -5,10 +5,11 @@ import { ItemContextProvider } from "../../App";
 export function TodoForm() {
     const [text, setText] = useState('');
     const {addTask} = useContext(ItemContextProvider); // pega o valor do Provider
-        
-    const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+
+    const handleClick = (event: React.MouseEvent<HTMLButtonElement> ) => {
         event.preventDefault();
         addTask(text);
+        setText('');
     }
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -18,7 +19,7 @@ export function TodoForm() {
         <form action="" className="container-form">
             <label htmlFor="Tarefa">Digite uma tarefa:</label>
             <div className="container-submit">
-                <input onChange={handleChange} type="text" placeholder="Digite aqui" />
+                <input onChange={handleChange} type="text" placeholder="Digite aqui" value={text} />
                 <button onClick={handleClick} id="add-tarefa">+</button>
             </div>
         </form>

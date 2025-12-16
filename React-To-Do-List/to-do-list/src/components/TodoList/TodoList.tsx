@@ -13,7 +13,7 @@ export function TodoList(){
                 {items.map(
                     item =>(
                         <TodoItem id={item.id} text={item.text} > 
-                            
+                        
                         </TodoItem>
                 )
                 )}
