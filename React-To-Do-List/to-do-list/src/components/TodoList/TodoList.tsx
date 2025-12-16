@@ -12,7 +12,7 @@ export function TodoList(){
               <ul className="items-list">
                 {items.map(
                     item =>(
-                        <TodoItem key={item.id} text={item.text} > 
+                        <TodoItem id={item.id} text={item.text} > 
                             
                         </TodoItem>
                 )

@@ -11,14 +11,21 @@ type ItemType = {
   text: string;
 }
 
-type ItemContextProviderType = {
-  items: ItemType[];
-  addTask: (text: string) => void
-}
+// type ItemContextProviderType = {
+//   items: ItemType[];
+//   addTask: (text: string) => void
+// }
 
-export const ItemContextProvider = createContext<ItemContextProviderType | undefined>(
-  undefined
-);
+// export const ItemContextProvider = createContext<ItemContextProviderType | undefined>(
+//   undefined
+// );
+
+export const ItemContextProvider= createContext(
+  {
+    items:[{id:'', text:''}],
+    addTask: (text: string)=>{}
+  }
+)
 
 function App() {
 

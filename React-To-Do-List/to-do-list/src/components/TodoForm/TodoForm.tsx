@@ -5,6 +5,7 @@ import { ItemContextProvider } from "../../App";
 export function TodoForm() {
     const [text, setText] = useState('');
     const {addTask} = useContext(ItemContextProvider); // pega o valor do Provider
+        
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();
         addTask(text);

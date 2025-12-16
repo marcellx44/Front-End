@@ -1,13 +1,13 @@
 import "./to-do-item.estilos.css"
 
-type TodoItemType = {
-  key: string;
+type ItemType = {
+  id: string;
   text: string;
 }
 
-export const TodoItem=({key, text}:TodoItemType)=>{
+export const TodoItem=({id, text}:ItemType)=>{
     return(
-        <li className="container-item" key={key}>
+        <li className="container-item" key={id}>
             <input type="checkbox" id='check' />
             <p>{text}</p>
             <button id="excluir">X</button>
