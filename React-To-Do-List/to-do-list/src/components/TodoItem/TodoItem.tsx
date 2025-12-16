@@ -1,8 +1,8 @@
 import "./to-do-item.estilos.css"
 
-type TodoItemType={
-    key:string;
-    text:string;
+type TodoItemType = {
+  key: string;
+  text: string;
 }
 
 export const TodoItem=({key, text}:TodoItemType)=>{

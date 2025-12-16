@@ -1,17 +1,16 @@
 import "./to-do-form.estilos.css"
-import {useContext, useState} from "react";
-import { ItemContextProvider } from "./context-item";
-// import  ItemContextProvider  from "../../App";
+import { useContext, useState } from "react";
+import { ItemContextProvider } from "../../App";
 
 export function TodoForm() {
     const [text, setText] = useState('');
-    const {addTask} = useContext(ItemContextProvider)
-    const handleClick= (event: React.MouseEvent<HTMLButtonElement>)=>{
+    const {addTask} = useContext(ItemContextProvider); // pega o valor do Provider
+    const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();
         addTask(text);
     }
 
-    const handleChange=(event: React.ChangeEvent<HTMLInputElement>)=>{
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setText(event.target.value)
     }
     return (
