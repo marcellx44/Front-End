@@ -3,3 +3,22 @@
     flex-grow:0.15;
     height:100vh;
 }
+
+.container-create-list{
+    background-color: white;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 15px;
+}
+
+.container-create-list>label{
+    background-color: black;
+    color:white;
+    padding:5px 10px;
+    border-radius:5px;
+}
+
+#btn-create-list{
+    background-color: rgb(122, 180, 122);
+}
