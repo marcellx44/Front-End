@@ -2,16 +2,19 @@ import { useContext, useState } from "react"
 import "./sidebar-children.styles.css"
 import { ItemContextProvider } from "../../../App.jsx";
 export function SidebarChildren() {
-    const {addList}= useContext(ItemContextProvider)
+    const { addList } = useContext(ItemContextProvider)
     const [name, setName] = useState('')
-     
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>)=>{
+
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setName(event.target.value);
     }
 
-    const handleClick = ()=>{
+    const handleClick = () => {
         //addList(name);
-        addList(name);
+        if (name != '') {
+            addList(name);
+            setName('')
+        }
     }
 
     return (
@@ -24,7 +27,7 @@ export function SidebarChildren() {
             </div>
             <div className="container-name-list">
                 <label htmlFor="">Nome da lista:</label>
-                <input onChange={handleChange} type="text" />
+                <input onChange={handleChange} type="text" value={name}/>
                 <button onClick={handleClick}>Criar</button>
             </div>
         </div>
