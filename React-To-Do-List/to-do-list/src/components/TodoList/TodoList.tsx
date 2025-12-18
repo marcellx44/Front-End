@@ -4,20 +4,28 @@ import { ItemContextProvider } from "../../App.tsx";
 import { useContext } from "react";
 import { TodoItem } from "../TodoItem/TodoItem.tsx";
 
-export function TodoList(){
-    const {items} = useContext(ItemContextProvider )
-    return(
-        <div className="container-todolist">
-            <TodoForm></TodoForm>
-              <ul className="items-list">
-                {items.map(
-                    item =>(
-                        <TodoItem id={item.id} text={item.text} > 
-                        
-                        </TodoItem>
-                )
-                )}
-            </ul>  
-        </div>
-    )
+type ListType = {
+    key: string;
+    name: string; //Nome da lista
+}
+
+export const TodoList = ({ key, name }: ListType) => {
+    {
+        const { items } = useContext(ItemContextProvider)
+        return (
+            <div className="container-todolist" id={key}> 
+                <h1>{name}</h1>
+                <TodoForm></TodoForm>
+                <ul className="items-list">
+                    {items.map(
+                        item => (
+                            <TodoItem id={item.id} text={item.text} >
+
+                            </TodoItem>
+                        )
+                    )}
+                </ul>
+            </div>
+        )
+    }
 }

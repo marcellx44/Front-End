@@ -1,0 +1,28 @@
+.container-children-sidebar{
+    background-color: white;
+    display:flex;
+    flex-direction: column;
+    padding: 5px 15px;
+    
+}
+
+.container-children-sidebar>label{
+    background-color: black;
+    color:white;
+    padding:5px 10px;
+    border-radius:5px;
+}
+
+.container-create-list{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container-name-list{
+    display:flex;
+}
+
+#btn-create-list{
+    background-color: rgb(122, 180, 122);
+}
