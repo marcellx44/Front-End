@@ -60,7 +60,7 @@ function App() {
 
       </Sidebar>
       <Principal>
-      <ul>
+      <ul className='container-lists'>
         {
           lists.map(
             list=>(
