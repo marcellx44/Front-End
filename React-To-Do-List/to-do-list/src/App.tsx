@@ -5,15 +5,15 @@ import { Sidebar } from "./components/Sidebar/Sidebar.tsx";
 import { TodoList } from './components/TodoList/TodoList.tsx';
 import { useState, createContext } from "react";
 
-
-type ItemType = {
-  id: string;
+type TaskType = {
+  taskId: string;
   text: string;
 }
-type ListType={
-       key: string;
-       name: string; //Nome da lista
-   }
+type ListType = {
+  listKey: string;
+  name: string; //Nome da lista
+  tasksList: TaskType[];
+}
 
 // type ItemContextProviderType = {
 //   items: ItemType[];
@@ -24,35 +24,65 @@ type ListType={
 //   undefined
 // );
 
-export const ItemContextProvider= createContext(
+export const ItemContextProvider = createContext(
   {
-    items:[{id:'', text:''}],
-    addTask: (text: string)=>{},
-    removeTask: (id: string)=>{},
-    addList: (name: string)=>{}
+    //items: [{ id: '', text: '' }],
+    lists: [
+      {
+        listKey: '',
+        name: '',
+        tasksList: [
+          {
+            taskId: '',
+            text: ''
+          }
+        ]
+      }
+    ],
+    addTask: (text: string, listKey: string) => { },
+    //removeTask: (id: string) => { },
+    addList: (name: string) => { }
   }
 )
 
 function App() {
-  
-  const [items, setItems] = useState<ItemType[]>([])
+
   const [lists, setLists] = useState<ListType[]>([]); //lista de to do lists
+  //const [items, setItems] = useState<ItemType[]>([])
+  const addTask = (text: string, listKey: string) => {
+    //setItems([...items, { itemId: items.length.toString(), text: text }]);
 
-  const addTask = (text: string) => {
-    setItems([...items, { id: items.length.toString(), text: text }]);
-    console.log(items)
+    const copyList = lists.map(
+      list => {
+        if (list.listKey === listKey) {
+          const updatedList = { //cria um novo objeto to do list
+            ...list,
+            taskList: [...list.tasksList, { taskId: 'item-' + list.tasksList.length.toString(), text: text }] //adiciona o item novo
+          }
+          //setLists([...lists, updatedList]) //adiciona a lista com listKey duplicado 
+          return updatedList;
+        }
+        return list;
+      }
+    )
+    setLists(copyList)
   }
 
-  const removeTask= (id: string)=>{
-    setItems(items=> items.filter(item=>item.id !== id));
-  }
+  // const removeTask = (id: string) => {
+  //   setItems(items => items.filter(item => item.itemId !== id));
+  // }
 
-  const addList= (name: string)=>{ //funcao de adicionar listas
-    setLists([...lists, {key: lists.length.toString(), name: name}]);
+  const addList = (name: string) => { //funcao de adicionar listas
+    setLists([...lists,
+    {
+      listKey: 'list-' + lists.length.toString(),
+      name: name,
+      tasksList: []
+    }]);
   }
 
   return (
-    <ItemContextProvider.Provider value={{ items, addTask, removeTask, addList }}>
+    <ItemContextProvider.Provider value={{ lists, addTask, addList }}>
       <Header>
 
       </Header>
@@ -60,18 +90,18 @@ function App() {
 
       </Sidebar>
       <Principal>
-      <ul className='container-lists'>
-        {
-          lists.map(
-            list=>(
-              <TodoList key={list.key} name={list.name}>
+        <ul className='container-lists'>
+          {
+            lists.map(
+              list => (
+                <TodoList key={list.listKey} name={list.name}>
 
-              </TodoList>
+                </TodoList>
+              )
             )
-          )
-        }
-      </ul>
-    
+          }
+        </ul>
+
       </Principal>
     </ItemContextProvider.Provider>
   )

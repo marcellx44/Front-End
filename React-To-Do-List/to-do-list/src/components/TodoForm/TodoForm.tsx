@@ -9,7 +9,7 @@ export function TodoForm() {
     const handleClick = (event: React.MouseEvent<HTMLButtonElement> ) => {
         event.preventDefault();
         if(text!=''){
-            addTask(text);
+            addTask(text, listKey);
         }
         setText('');
     }

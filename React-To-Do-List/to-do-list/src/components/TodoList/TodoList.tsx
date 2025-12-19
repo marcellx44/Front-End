@@ -11,15 +11,16 @@ type ListType = {
 
 export const TodoList = ({ key, name }: ListType) => {
     {
-        const { items } = useContext(ItemContextProvider)
+        const { lists } = useContext(ItemContextProvider)
+        const todolist= lists;
         return (
             <div className="container-todolist" id={key}> 
                 <h1>{name}</h1>
                 <TodoForm></TodoForm>
                 <ul className="items-list">
-                    {items.map(
-                        item => (
-                            <TodoItem id={item.id} text={item.text} >
+                    {todolist.tasksList.map(
+                        task => (
+                            <TodoItem taskId={task.taskId} text={task.text} >
 
                             </TodoItem>
                         )
