@@ -40,7 +40,7 @@ export const ItemContextProvider = createContext(
       }
     ],
     addTask: (text: string, listKey: string) => { },
-    //removeTask: (id: string) => { },
+    removeTask: (listKey:string, taskId:string) => { },
     addList: (name: string) => { }
   }
 )
@@ -69,9 +69,23 @@ function App() {
     console.log(lists)
   }
 
-  // const removeTask = (id: string) => {
-  //   setItems(items => items.filter(item => item.itemId !== id));
-  // }
+  const removeTask = (listKey:string, taskId: string) => {
+    const copyList = lists.map(
+      list=>{
+        if(list.listKey===listKey){
+          const updatedList = {
+            ...list, 
+            tasksList: list.tasksList.filter(
+              task=> task.taskId !== taskId
+            )
+          }
+          return updatedList;
+        }
+        return list;
+      }
+    )
+    setLists(copyList)
+  }
 
   const addList = (name: string) => { //funcao de adicionar listas
     setLists([...lists,
@@ -83,7 +97,7 @@ function App() {
   }
 
   return (
-    <ItemContextProvider.Provider value={{ lists, addTask, addList }}>
+    <ItemContextProvider.Provider value={{ lists, addTask, removeTask, addList }}>
       <Header>
 
       </Header>

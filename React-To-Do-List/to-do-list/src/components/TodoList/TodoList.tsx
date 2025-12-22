@@ -15,7 +15,7 @@ export const TodoList = ({ name, listKey }: { name: string, listKey: string }) =
                 <ul className="items-list">
                     {chosenList?.tasksList.map(
                         task=>
-                            <TodoItem taskId={task.taskId} text={task.text}></TodoItem>
+                            <TodoItem taskId={task.taskId} text={task.text} listKey={listKey}></TodoItem>
                     )}
                 </ul>
             </div>

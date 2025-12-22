@@ -1,21 +1,19 @@
 import { ItemContextProvider } from "../../App";
 import "./to-do-item.estilos.css"
+import { useContext } from "react";
 
-type TaskType = {
-  taskId: string;
-  text: string;
-}
-export const TodoItem=({taskId, text}:TaskType)=>{
-    //const {removeTask} = useContext(ItemContextProvider)
 
-    // const handleRemove= ()=>{
-    //     removeTask(id)
-    // }
+export const TodoItem=({taskId, text, listKey}:{taskId:string, text: string, listKey:string})=>{
+    const {removeTask} = useContext(ItemContextProvider)
+
+    const handleRemove= ()=>{
+        removeTask(listKey, taskId)
+    }
     return(
         <li className="container-item" key={taskId}>
             <input type="checkbox" id='check' />
             <p>{text}</p>
-            <button id="excluir" >X</button>
+            <button id="excluir" onClick={handleRemove}>X</button>
         </li>
     )
 }
