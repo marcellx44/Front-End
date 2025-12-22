@@ -29,7 +29,7 @@ export const ItemContextProvider = createContext(
     //items: [{ id: '', text: '' }],
     lists: [
       {
-        listKey: '',
+        listKey: '0',
         name: '',
         tasksList: [
           {
@@ -57,7 +57,7 @@ function App() {
         if (list.listKey === listKey) {
           const updatedList = { //cria um novo objeto to do list
             ...list,
-            taskList: [...list.tasksList, { taskId: 'item-' + list.tasksList.length.toString(), text: text }] //adiciona o item novo
+            tasksList: [...list.tasksList, { taskId: 'item-' + list.tasksList.length.toString(), text: text }] //adiciona o item novo
           }
           //setLists([...lists, updatedList]) //adiciona a lista com listKey duplicado 
           return updatedList;
@@ -66,6 +66,7 @@ function App() {
       }
     )
     setLists(copyList)
+    console.log(lists)
   }
 
   // const removeTask = (id: string) => {
@@ -94,8 +95,10 @@ function App() {
           {
             lists.map(
               list => (
-                <TodoList key={list.listKey} name={list.name}>
+                <TodoList key={list.listKey} name={list.name} listKey={list.listKey
 
+                }>
+                  
                 </TodoList>
               )
             )

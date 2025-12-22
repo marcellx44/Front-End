@@ -2,14 +2,13 @@ import "./to-do-form.estilos.css"
 import { useContext, useState } from "react";
 import { ItemContextProvider } from "../../App";
 
-export function TodoForm() {
+export const TodoForm = ({listKey}: {listKey:string})=> {
     const [text, setText] = useState('');
     const {addTask} = useContext(ItemContextProvider); // pega o valor do Provider
-
     const handleClick = (event: React.MouseEvent<HTMLButtonElement> ) => {
         event.preventDefault();
         if(text!=''){
-            addTask(text, listKey);
+            addTask(text, listKey)
         }
         setText('');
     }

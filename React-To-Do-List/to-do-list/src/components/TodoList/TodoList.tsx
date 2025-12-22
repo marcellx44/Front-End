@@ -4,26 +4,18 @@ import { ItemContextProvider } from "../../App.tsx";
 import { useContext } from "react";
 import { TodoItem } from "../TodoItem/TodoItem.tsx";
 
-type ListType = {
-    key: string;
-    name: string; //Nome da lista
-}
-
-export const TodoList = ({ key, name }: ListType) => {
+export const TodoList = ({ name, listKey }: { name: string, listKey: string }) => {
     {
         const { lists } = useContext(ItemContextProvider)
-        const todolist= lists;
+        const chosenList= lists.find(list => list.listKey=== listKey)
         return (
-            <div className="container-todolist" id={key}> 
+            <div className="container-todolist" id={listKey}>
                 <h1>{name}</h1>
-                <TodoForm></TodoForm>
+                <TodoForm listKey={listKey}></TodoForm>
                 <ul className="items-list">
-                    {todolist.tasksList.map(
-                        task => (
-                            <TodoItem taskId={task.taskId} text={task.text} >
-
-                            </TodoItem>
-                        )
+                    {chosenList?.tasksList.map(
+                        task=>
+                            <TodoItem taskId={task.taskId} text={task.text}></TodoItem>
                     )}
                 </ul>
             </div>
