@@ -10,7 +10,6 @@ export function SidebarChildren() {
     }
 
     const handleClick = () => {
-        //addList(name);
         if (name != '') {
             addList(name)
             setName('')

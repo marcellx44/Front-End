@@ -26,7 +26,6 @@ type ListType = {
 
 export const ItemContextProvider = createContext(
   {
-    //items: [{ id: '', text: '' }],
     lists: [
       {
         listKey: '0',
@@ -48,9 +47,7 @@ export const ItemContextProvider = createContext(
 function App() {
 
   const [lists, setLists] = useState<ListType[]>([]); //lista de to do lists
-  //const [items, setItems] = useState<ItemType[]>([])
   const addTask = (text: string, listKey: string) => {
-    //setItems([...items, { itemId: items.length.toString(), text: text }]);
 
     const copyList = lists.map(
       list => {
@@ -59,7 +56,6 @@ function App() {
             ...list,
             tasksList: [...list.tasksList, { taskId: 'item-' + list.tasksList.length.toString(), text: text }] //adiciona o item novo
           }
-          //setLists([...lists, updatedList]) //adiciona a lista com listKey duplicado 
           return updatedList;
         }
         return list;
