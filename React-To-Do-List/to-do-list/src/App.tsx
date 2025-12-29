@@ -28,7 +28,7 @@ export const ItemContextProvider = createContext(
   {
     lists: [
       {
-        listKey: '0',
+        listKey: '',
         name: '',
         tasksList: [
           {
@@ -48,7 +48,7 @@ function App() {
   type Action =
     | { type: 'addTask', payload: { text: string, listKey: string } }
     | { type: 'removeTask', payload: { listKey: string, taskId: string } }
-    | { type:  'addList', payload: {name: string}}
+    | { type: 'addList', payload: { name: string } }
 
 
   const reducer = (lists: ListType[], action: Action) => {
@@ -84,24 +84,15 @@ function App() {
         )
         return copyList
       case ('addList'):
-        return [...lists, ]
+        return [...lists, {
+          listKey: 'list-' + lists.length.toString(),
+          name: action.payload.name,
+          tasksList: []
+        }]
     }
   }
 
-  const initialState = [
-    {
-      listKey: '0',
-      name: '',
-      tasksList: [
-        {
-          taskId: '',
-          text: ''
-        }
-      ]
-    }
-  ]
-
-  const [lists, dispatch] = useReducer(reducer, initialState); //lista de to do lists
+  const [lists, dispatch] = useReducer(reducer, []); //lista de to do lists
   // const addTask = (text: string, listKey: string) => {
 
   //   const newList = lists.map(
@@ -145,13 +136,17 @@ function App() {
     dispatch({ type: 'removeTask', payload: { listKey, taskId } })
   }
 
+  const addList = (name: string)=>{
+    dispatch({type: 'addList', payload: {name: name}})
+  }
+
   // const addList = (name: string) => { //funcao de adicionar listas
   //   setLists([...lists,
-  //   {
-  //     listKey: 'list-' + lists.length.toString(),
-  //     name: name,
-  //     tasksList: []
-  //   }]);
+  // {
+  //   listKey: 'list-' + lists.length.toString(),
+  //   name: name,
+  //   tasksList: []
+  // }]);
   // }
 
   return (
