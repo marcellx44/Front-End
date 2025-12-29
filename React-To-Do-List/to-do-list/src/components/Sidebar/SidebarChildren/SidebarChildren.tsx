@@ -1,6 +1,7 @@
 import { useContext, useState } from "react"
 import "./sidebar-children.styles.css"
 import { ItemContextProvider } from "../../../App.jsx";
+import {Button} from "@mui/material"
 export function SidebarChildren() {
     const { addList } = useContext(ItemContextProvider)
     const [name, setName] = useState('')
@@ -27,7 +28,7 @@ export function SidebarChildren() {
             <div className="container-name-list">
                 <label htmlFor="">Nome da lista:</label>
                 <input onChange={handleChange} type="text" value={name}/>
-                <button onClick={handleClick}>Criar</button>
+                <Button variant="contained" onClick={handleClick} size="small">Criar</Button>
             </div>
         </div>
     )

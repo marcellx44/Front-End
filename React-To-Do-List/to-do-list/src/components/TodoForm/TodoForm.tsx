@@ -1,13 +1,14 @@
 import "./to-do-form.estilos.css"
+import { TextField, Button } from "@mui/material";
 import { useContext, useState } from "react";
 import { ItemContextProvider } from "../../App";
 
-export const TodoForm = ({listKey}: {listKey:string})=> {
+export const TodoForm = ({ listKey }: { listKey: string }) => {
     const [text, setText] = useState('');
-    const {addTask} = useContext(ItemContextProvider); // pega o valor do Provider
-    const handleClick = (event: React.MouseEvent<HTMLButtonElement> ) => {
+    const { addTask } = useContext(ItemContextProvider); // pega o valor do Provider
+    const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();
-        if(text!=''){
+        if (text != '') {
             addTask(text, listKey)
         }
         setText('');
@@ -20,7 +21,7 @@ export const TodoForm = ({listKey}: {listKey:string})=> {
         <form action="" className="container-form">
             <label htmlFor="Tarefa">Digite uma tarefa:</label>
             <div className="container-submit">
-                <input onChange={handleChange} type="text" placeholder="Digite aqui" value={text} />
+                <TextField id="outlined-basic" label="Tarefa" variant="outlined" onChange={handleChange} value={text} size="small" />
                 <button onClick={handleClick} id="add-tarefa">+</button>
             </div>
         </form>
