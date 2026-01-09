@@ -1,9 +1,8 @@
-import { useContext, useState } from "react"
+import { useState } from "react"
 import "./sidebar-children.styles.css"
-import { ItemContextProvider } from "../../../App.jsx";
 import {Button} from "@mui/material"
+import { useDispatch } from "react-redux"
 export function SidebarChildren() {
-    const { addList } = useContext(ItemContextProvider)
     const [name, setName] = useState('')
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -12,7 +11,8 @@ export function SidebarChildren() {
 
     const handleClick = () => {
         if (name != '') {
-            addList(name)
+            const dispatch = useDispatch()
+            dispatch({type: 'addlist', payload: name})
             setName('')
         }
     }

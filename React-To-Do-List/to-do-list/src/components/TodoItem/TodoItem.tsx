@@ -1,7 +1,8 @@
 import { createTheme, Dialog, DialogContentText } from "@mui/material";
-import { ItemContextProvider } from "../../App";
 import "./to-do-item.estilos.css"
-import { useContext, useState } from "react";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import type { ReduxStateType } from "../../redux/store";
 
 const DialogTheme = createTheme({
     palette: {
@@ -20,10 +21,11 @@ export const TodoItem = ({ taskId, text, listKey }: { taskId: string, text: stri
     const handleClose = () => {
         setOpen(false);
     }
-    const { removeTask } = useContext(ItemContextProvider)
 
     const handleRemove = () => {
-        removeTask(listKey, taskId)
+        //removeTask(listKey, taskId)
+        const dispatch = useDispatch()
+        dispatch({type: 'removetask', payload:{listKey: listKey, taskId: taskId}})
     }
     return (
      

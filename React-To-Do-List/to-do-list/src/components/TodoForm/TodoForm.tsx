@@ -1,15 +1,15 @@
 import "./to-do-form.estilos.css"
-import { TextField, Button } from "@mui/material";
-import { useContext, useState } from "react";
-import { ItemContextProvider } from "../../App";
+import { TextField } from "@mui/material";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
 
 export const TodoForm = ({ listKey }: { listKey: string }) => {
     const [text, setText] = useState('');
-    const { addTask } = useContext(ItemContextProvider); // pega o valor do Provider
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();
         if (text != '') {
-            addTask(text, listKey)
+            const dispatch = useDispatch();
+            dispatch({type: 'addtask', payload:{text: text, listKey: listKey}})
         }
         setText('');
     }

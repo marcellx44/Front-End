@@ -1,12 +1,12 @@
 import "./to-do-list.estilos.css"
 import { TodoForm } from "../../components/TodoForm/TodoForm.tsx";
-import { ItemContextProvider } from "../../App.tsx";
-import { useContext } from "react";
 import { TodoItem } from "../TodoItem/TodoItem.tsx";
+import type { ReduxStateType } from "../../redux/store/index.ts";
+import { useSelector } from "react-redux";
 
 export const TodoList = ({ name, listKey }: { name: string, listKey: string }) => {
     {
-        const { lists } = useContext(ItemContextProvider)
+        const lists= useSelector((state: ReduxStateType)=> state.lists);
         const chosenList= lists.find(list => list.listKey=== listKey)
         return (
             <div className="container-todolist" id={listKey}>
