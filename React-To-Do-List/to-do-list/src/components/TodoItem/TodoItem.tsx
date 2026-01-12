@@ -1,7 +1,8 @@
-import {  Dialog, DialogContentText } from "@mui/material";
+import { DialogContentText } from "@mui/material";
 import "./to-do-item.estilos.css"
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { SDialog } from "./SDialog";
 
 // const DialogTheme = createTheme({
 //     palette: {
@@ -32,12 +33,12 @@ export const TodoItem = ({ taskId, text, listKey }: { taskId: string, text: stri
                 <input type="checkbox" id='check' />
                 <p>{text}</p>
                 <a href="#" onClick={handleClickOpen}>Exibir detalhes</a>
-                <Dialog
+                <SDialog
                     open= {open}
                     onClose= {handleClose}
                 >
                     <DialogContentText>{text}</DialogContentText>
-                </Dialog>
+                </SDialog>
                 <button id="excluir" onClick={handleRemove}>X</button>
             </li >
       
