@@ -4,6 +4,7 @@ import {Button} from "@mui/material"
 import { useDispatch } from "react-redux"
 export function SidebarChildren() {
     const [name, setName] = useState('')
+    const dispatch = useDispatch()
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setName(event.target.value);
@@ -11,7 +12,6 @@ export function SidebarChildren() {
 
     const handleClick = () => {
         if (name != '') {
-            const dispatch = useDispatch()
             dispatch({type: 'addlist', payload: name})
             setName('')
         }

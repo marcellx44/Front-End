@@ -1,20 +1,20 @@
-import { createTheme, Dialog, DialogContentText } from "@mui/material";
+import {  Dialog, DialogContentText } from "@mui/material";
 import "./to-do-item.estilos.css"
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import type { ReduxStateType } from "../../redux/store";
+import { useDispatch } from "react-redux";
 
-const DialogTheme = createTheme({
-    palette: {
-        primary:{
-            main: '#1976d2'
-        }
-    }
-})
+// const DialogTheme = createTheme({
+//     palette: {
+//         primary:{
+//             main: '#1976d2'
+//         }
+//     }
+// })
 
 
 export const TodoItem = ({ taskId, text, listKey }: { taskId: string, text: string, listKey: string }) => {
     const [open, setOpen] = useState(false)
+    const dispatch = useDispatch()
     const handleClickOpen = () => {
         setOpen(true);
     };
@@ -24,7 +24,6 @@ export const TodoItem = ({ taskId, text, listKey }: { taskId: string, text: stri
 
     const handleRemove = () => {
         //removeTask(listKey, taskId)
-        const dispatch = useDispatch()
         dispatch({type: 'removetask', payload:{listKey: listKey, taskId: taskId}})
     }
     return (

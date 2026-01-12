@@ -4,9 +4,9 @@ import type { ReduxActionType } from "../actions";
 
 // estado inicial 
 const initialState: ReduxStateType = {
-    lists: []
+    lists:[]
 }
-//o meu reducer
+//reducer
 
 export const reducer = (state: ReduxStateType = initialState, action: ReduxActionType): ReduxStateType => {
     // colocar as actions de acordo com o type 
@@ -50,6 +50,8 @@ export const reducer = (state: ReduxStateType = initialState, action: ReduxActio
                 }
             )
             return {...state, lists: copyList}
+        default: 
+            return state;
     }
 }
 

@@ -5,10 +5,10 @@ import { useDispatch } from "react-redux";
 
 export const TodoForm = ({ listKey }: { listKey: string }) => {
     const [text, setText] = useState('');
+    const dispatch = useDispatch();
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();
         if (text != '') {
-            const dispatch = useDispatch();
             dispatch({type: 'addtask', payload:{text: text, listKey: listKey}})
         }
         setText('');
